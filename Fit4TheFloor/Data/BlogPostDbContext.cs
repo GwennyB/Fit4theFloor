@@ -5,9 +5,9 @@ using System;
 namespace Fit4TheFloor.Data
 {
     // This class reflects the database context for the 'SiltonUser' database. Its build relies on Entity Framework Core (ORM). Data seeding is used to manage application questions until the Admin feature to do same is ready to deploy.
-    public class SalesDbContext : DbContext
+    public class BlogPostDbContext : DbContext
     {
-        public SalesDbContext(DbContextOptions<SalesDbContext> options) : base(options)
+        public BlogPostDbContext(DbContextOptions<BlogPostDbContext> options) : base(options)
         {
 
         }
@@ -47,10 +47,7 @@ namespace Fit4TheFloor.Data
         }
 
         // build tables
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<Cart> Carts { get; set; }
-        public DbSet<Print> Prints { get; set; }
+        public DbSet<BlogPost> BlogPosts { get; set; }
 
     }
 }

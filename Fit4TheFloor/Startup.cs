@@ -32,13 +32,29 @@ namespace Fit4TheFloor
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<AppUserDbContext>(options =>
-                options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_USER"]};Initial Catalog={Configuration["RDS_DBNAME_USER"]};User ID={Configuration["RDS_USERNAME_USER"]};Password={Configuration["RDS_PASSWORD_USER"]}"));
+                options.UseSqlServer(Configuration.GetConnectionString("FitUserLocal")));
 
             services.AddDbContext<SalesDbContext>(options =>
-                options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_SALES"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
+                options.UseSqlServer(Configuration.GetConnectionString("FitSalesLocal")));
 
             services.AddDbContext<StatsDbContext>(options =>
-                options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_STATS"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
+                options.UseSqlServer(Configuration.GetConnectionString("FitStatsLocal")));
+
+            services.AddDbContext<BlogPostDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("FitPostsLocal")));
+
+
+            //services.AddDbContext<AppUserDbContext>(options =>
+            //    options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_USER"]};Initial Catalog={Configuration["RDS_DBNAME_USER"]};User ID={Configuration["RDS_USERNAME_USER"]};Password={Configuration["RDS_PASSWORD_USER"]}"));
+
+            //services.AddDbContext<SalesDbContext>(options =>
+            //    options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_SALES"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
+
+            //services.AddDbContext<StatsDbContext>(options =>
+            //    options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_STATS"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
+
+            //services.AddDbContext<StatsDbContext>(options =>
+            //    options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_POSTS"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
 
             services.AddMvc();
 

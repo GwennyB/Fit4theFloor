@@ -47,10 +47,7 @@ namespace Fit4TheFloor.Data
         }
 
         // build tables
-        //public DbSet<SFApp> SFApps { get; set; }
-        //public DbSet<Evaluation> Evaluations { get; set; }
-        //public DbSet<Question> Questions { get; set; }
-        //public DbSet<AppResponse> AppResponses { get; set; }
+        public DbSet<WeighIn> WeighIns { get; set; }
 
     }
 }
