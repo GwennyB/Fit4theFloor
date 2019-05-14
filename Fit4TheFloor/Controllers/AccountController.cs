@@ -30,6 +30,14 @@ namespace Fit4TheFloor.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Register(RegisterViewModel vm)
         {
+            if (ModelState.IsValid)
+            {
+                if (await _user.Register(vm))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Registration failed. Please try again.");
             return View();
         }
 
@@ -44,6 +52,14 @@ namespace Fit4TheFloor.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
+            if (ModelState.IsValid)
+            {
+                if (await _user.Login(vm))
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Login failed. Please try again.");
             return View();
         }
 
@@ -52,7 +68,7 @@ namespace Fit4TheFloor.Controllers
         public async Task<IActionResult> Logout()
         {
             await _user.Logout();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

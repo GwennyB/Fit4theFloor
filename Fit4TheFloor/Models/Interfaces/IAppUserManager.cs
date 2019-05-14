@@ -11,7 +11,7 @@ namespace Fit4TheFloor.Models.Interfaces
 
         Task<bool> Register(RegisterViewModel bag);
         Task<bool> Login(LoginViewModel bag);
-        Task<bool> Logout(string email);
+        Task Logout();
 
     }
 }
