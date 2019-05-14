@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface IPrintManager
+    public interface IPrintManager
     {
         Task<Print> GetPrintAsync(int id);
         Task<List<Print>> GetAllPrintsAsync();

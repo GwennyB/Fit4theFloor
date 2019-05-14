@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface IAppUserManager
+    public interface IAppUserManager
     {
     }
 }

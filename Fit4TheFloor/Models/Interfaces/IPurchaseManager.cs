@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface IPurchaseManager
+    public interface IPurchaseManager
     {
         Task<Purchase> GetPurchaseAsync(int id);
         Task<Purchase> GetPurchaseAsync(int cartID, int productID);

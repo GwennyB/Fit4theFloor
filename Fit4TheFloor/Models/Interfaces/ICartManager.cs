@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface ICartManager
+    public interface ICartManager
     {
         Task<Cart> GetCartAsync(string email);
         Task<List<Cart>> GetAllCartsAsync();

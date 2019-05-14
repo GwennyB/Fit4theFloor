@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface IProductManager
+    public interface IProductManager
     {
         Task<Product> GetProductAsync(int id);
         Task<List<Product>> GetAllProductsAsync();

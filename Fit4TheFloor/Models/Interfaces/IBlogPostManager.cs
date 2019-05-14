@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Fit4TheFloor.Models.Interfaces
 {
-    interface IBlogPostManager
+    public interface IBlogPostManager
     {
         Task<BlogPost> GetBlogPostAsync(int id);
         Task<List<BlogPost>> GetAllBlogPostsAsync();
