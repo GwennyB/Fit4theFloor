@@ -19,6 +19,27 @@ namespace Fit4TheFloor.Migrations.StatsDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Fit4TheFloor.Models.ClientMessage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contents");
+
+                    b.Property<string>("From");
+
+                    b.Property<DateTime?>("Read");
+
+                    b.Property<DateTime>("Sent");
+
+                    b.Property<string>("To");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ClientMessages");
+                });
+
             modelBuilder.Entity("Fit4TheFloor.Models.WeighIn", b =>
                 {
                     b.Property<int>("ID")

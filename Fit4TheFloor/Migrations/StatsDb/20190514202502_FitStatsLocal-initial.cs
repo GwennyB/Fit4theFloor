@@ -9,6 +9,23 @@ namespace Fit4TheFloor.Migrations.StatsDb
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "ClientMessages",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    From = table.Column<string>(nullable: true),
+                    To = table.Column<string>(nullable: true),
+                    Sent = table.Column<DateTime>(nullable: false),
+                    Read = table.Column<DateTime>(nullable: true),
+                    Contents = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClientMessages", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WeighIns",
                 columns: table => new
                 {
@@ -31,6 +48,9 @@ namespace Fit4TheFloor.Migrations.StatsDb
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ClientMessages");
+
             migrationBuilder.DropTable(
                 name: "WeighIns");
         }

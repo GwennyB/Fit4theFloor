@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fit4TheFloor.Migrations.StatsDb
 {
     [DbContext(typeof(StatsDbContext))]
-    [Migration("20190514195118_FitStatsLocal-initial")]
+    [Migration("20190514202502_FitStatsLocal-initial")]
     partial class FitStatsLocalinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,27 @@ namespace Fit4TheFloor.Migrations.StatsDb
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Fit4TheFloor.Models.ClientMessage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Contents");
+
+                    b.Property<string>("From");
+
+                    b.Property<DateTime?>("Read");
+
+                    b.Property<DateTime>("Sent");
+
+                    b.Property<string>("To");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ClientMessages");
+                });
 
             modelBuilder.Entity("Fit4TheFloor.Models.WeighIn", b =>
                 {
