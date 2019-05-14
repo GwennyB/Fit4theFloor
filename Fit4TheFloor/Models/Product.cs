@@ -13,5 +13,6 @@ namespace Fit4TheFloor.Models
         public string ImageURL { get; set; }
         public string Colors { get; set; }  // available colors
         public string Sizes { get; set; }  // available sizes
+        public bool Active { get; set; }
     }
 }

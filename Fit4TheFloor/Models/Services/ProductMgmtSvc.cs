@@ -28,12 +28,12 @@ namespace Fit4TheFloor.Models.Services
         }
 
         /// <summary>
-        /// Returns an unsorted list of all Product objects in the Products table
+        /// Returns an unsorted list of all (Active) Product objects in the Products table
         /// </summary>
-        /// <returns> list of all Product objects </returns>
+        /// <returns> list of all (Active) Product objects </returns>
         public async Task<List<Product>> GetAllProductsAsync()
         {
-            return await _context.Products.ToListAsync<Product>();
+            return await _context.Products.Where(p => p.Active == true).ToListAsync<Product>();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Fit4TheFloor.Models.Services
         /// <returns> Product object added to Products table </returns>
         public async Task<Product> CreateProductAsync(Product item)
         {
-            var query = await _context.Products.FirstOrDefaultAsync(p => p.Description == item.Description && p.ImageURL == item.ImageURL && p.Price == item.Price && p.Colors == item.Colors && p.Sizes == item.Sizes);
+            var query = await _context.Products.FirstOrDefaultAsync(p => p.Description == item.Description && p.ImageURL == item.ImageURL && p.Price == item.Price && p.Colors == item.Colors && p.Sizes == item.Sizes && p.Active == true);
             if (query == null)
             {
                 await _context.Products.AddAsync(item);
@@ -80,10 +80,11 @@ namespace Fit4TheFloor.Models.Services
         }
 
         /// <summary>
-        /// Deletes an existing Product if it exists in the Products table
+        /// Toggles the 'Active' property of an existing Product if it exists in the Products table
+        /// NOTE: Does not actually 'delete' Product items because closed carts (ie - sales history) may reference those Product objects.
         /// </summary>
-        /// <param name="id"> ID of Product object to delete </param>
-        /// <returns> delete success status (boolean) </returns>
+        /// <param name="id"> ID of Product object to deactivate </param>
+        /// <returns> deactivate success status (boolean) </returns>
         public async Task<bool> DeleteProductAsync(int id)
         {
             var query = await _context.Products.FindAsync(id);
@@ -91,10 +92,12 @@ namespace Fit4TheFloor.Models.Services
             {
                 return false;
             }
-            _context.Products.Remove(query);
+
+            query.Active = false;
+            _context.Products.Update(query);
             await _context.SaveChangesAsync();
             query = await _context.Products.FindAsync(id);
-            return (query == null);
+            return (query.Active == false);
         }
     }
 }

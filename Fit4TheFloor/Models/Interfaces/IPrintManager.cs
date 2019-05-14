@@ -7,5 +7,10 @@ namespace Fit4TheFloor.Models.Interfaces
 {
     interface IPrintManager
     {
+        Task<Print> GetPrintAsync(int id);
+        Task<List<Print>> GetAllPrintsAsync();
+        Task<Print> CreatePrintAsync(Print item);
+        Task<Print> UpdatePrintAsync(Print item);
+        Task<bool> DeletePrintAsync(int id);
     }
 }
