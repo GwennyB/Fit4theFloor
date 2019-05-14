@@ -63,6 +63,10 @@ namespace Fit4TheFloor.Models.Services
         public async Task<bool> DeleteProductAsync(int id)
         {
             var query = await _context.Products.FindAsync(id);
+            if (query == null)
+            {
+                return false;
+            }
             _context.Products.Remove(query);
             await _context.SaveChangesAsync();
             query = await _context.Products.FindAsync(id);
