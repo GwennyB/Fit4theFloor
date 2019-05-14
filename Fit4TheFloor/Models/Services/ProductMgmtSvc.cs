@@ -17,16 +17,30 @@ namespace Fit4TheFloor.Models.Services
             _context = context;
         }
 
+        /// <summary>
+        /// Finds and returns a Product by ID
+        /// </summary>
+        /// <param name="id"> ID of Product object to return </param>
+        /// <returns> specified Product (or null if none exists) </returns>
         public async Task<Product> GetProductAsync(int id)
         {
             return await _context.Products.FindAsync(id);
         }
 
+        /// <summary>
+        /// Returns an unsorted list of all Product objects in the Products table
+        /// </summary>
+        /// <returns> list of all Product objects </returns>
         public async Task<List<Product>> GetAllProductsAsync()
         {
             return await _context.Products.ToListAsync<Product>();
         }
 
+        /// <summary>
+        /// Creates a new Product object if an identical object doesn't already exist in the Products table
+        /// </summary>
+        /// <param name="item"> Product object to add to Products table </param>
+        /// <returns> Product object added to Products table </returns>
         public async Task<Product> CreateProductAsync(Product item)
         {
             var query = await _context.Products.FirstOrDefaultAsync(p => p.Description == item.Description && p.ImageURL == item.ImageURL && p.Price == item.Price && p.Colors == item.Colors && p.Sizes == item.Sizes);
@@ -38,6 +52,11 @@ namespace Fit4TheFloor.Models.Services
             return await _context.Products.FirstOrDefaultAsync(p => p.Description == item.Description && p.ImageURL == item.ImageURL && p.Price == item.Price && p.Colors == item.Colors && p.Sizes == item.Sizes);
         }
 
+        /// <summary>
+        /// Updates an existing Product if it exists in the Products table
+        /// </summary>
+        /// <param name="item"> Product object to update </param>
+        /// <returns> updated Product object from Products table </returns>
         public async Task<Product> UpdateProductAsync(Product item)
         {
             _context.Products.Update(item);
@@ -60,6 +79,11 @@ namespace Fit4TheFloor.Models.Services
             return await _context.Products.FindAsync(item.ID);
         }
 
+        /// <summary>
+        /// Deletes an existing Product if it exists in the Products table
+        /// </summary>
+        /// <param name="id"> ID of Product object to delete </param>
+        /// <returns> delete success status (boolean) </returns>
         public async Task<bool> DeleteProductAsync(int id)
         {
             var query = await _context.Products.FindAsync(id);
