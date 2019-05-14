@@ -33,7 +33,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true),
-                    ImageURL = table.Column<string>(nullable: true)
+                    ImageURL = table.Column<string>(nullable: true),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -50,7 +51,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
                     Price = table.Column<decimal>(nullable: false),
                     ImageURL = table.Column<string>(nullable: true),
                     Colors = table.Column<string>(nullable: true),
-                    Sizes = table.Column<string>(nullable: true)
+                    Sizes = table.Column<string>(nullable: true),
+                    Active = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -66,10 +68,12 @@ namespace Fit4TheFloor.Migrations.SalesDb
                     CartID = table.Column<int>(nullable: false),
                     ProductID = table.Column<int>(nullable: false),
                     ExtPrice = table.Column<decimal>(nullable: false),
+                    Qty = table.Column<int>(nullable: false),
                     Size = table.Column<int>(nullable: false),
                     Color = table.Column<int>(nullable: false),
                     PrintID = table.Column<int>(nullable: false),
-                    PrintColor = table.Column<int>(nullable: false)
+                    PrintColor = table.Column<int>(nullable: false),
+                    Closed = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

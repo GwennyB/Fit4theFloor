@@ -43,7 +43,7 @@ namespace Fit4TheFloor.Models
 
     public static class AppRoles
     {
-        public const string Client = "Client";
+        public const string Client = "Customer";
         public const string Admin = "Admin";
     }
 

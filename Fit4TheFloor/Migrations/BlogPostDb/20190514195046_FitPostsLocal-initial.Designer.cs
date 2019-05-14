@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fit4TheFloor.Migrations.BlogPostDb
 {
     [DbContext(typeof(BlogPostDbContext))]
-    [Migration("20190513200251_FitPostsLocal-initial")]
+    [Migration("20190514195046_FitPostsLocal-initial")]
     partial class FitPostsLocalinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

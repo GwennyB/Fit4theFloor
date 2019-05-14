@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fit4TheFloor.Migrations.StatsDb
 {
     [DbContext(typeof(StatsDbContext))]
-    [Migration("20190513195226_FitStatsLocal-initial")]
+    [Migration("20190514195118_FitStatsLocal-initial")]
     partial class FitStatsLocalinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
