@@ -11,10 +11,12 @@ namespace Fit4TheFloor.Models
         public int CartID { get; set; }
         public int ProductID { get; set; }
         public decimal ExtPrice { get; set; }
+        public int Qty { get; set; }
         public Size Size { get; set; }
         public Color Color { get; set; }
         public int PrintID { get; set; }
         public Color PrintColor { get; set; }
+        public DateTime? Closed { get; set; }
 
         // navigation properties
         public Cart Cart { get; set; }

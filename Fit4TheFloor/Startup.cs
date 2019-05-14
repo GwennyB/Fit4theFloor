@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Fit4TheFloor.Data;
 using Fit4TheFloor.Models;
+using Fit4TheFloor.Models.Interfaces;
+using Fit4TheFloor.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,6 +33,7 @@ namespace Fit4TheFloor
                 .AddEntityFrameworkStores<AppUserDbContext>()
                 .AddDefaultTokenProviders();
 
+            // TODO: On deploy to AWS, switch from local connection strings to AWS secrets
             services.AddDbContext<AppUserDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("FitUserLocal")));
 
@@ -56,13 +59,16 @@ namespace Fit4TheFloor
             //services.AddDbContext<StatsDbContext>(options =>
             //    options.UseSqlServer($"Data Source={Configuration["RDS_HOSTNAME_CONTENT"]};Initial Catalog={Configuration["RDS_DBNAME_POSTS"]};User ID={Configuration["RDS_USERNAME_CONTENT"]};Password={Configuration["RDS_PASSWORD_CONTENT"]}"));
 
+
             services.AddMvc();
 
-            //services.AddScoped<ISFAppManager, SFAppMgmtSvc>();
-            //services.AddScoped<IEvaluationManager, EvaluationMgmtSvc>();
-            //services.AddScoped<IAppResponseManager, AppResponseMgmtSvc>();
-            //services.AddScoped<IQuestionManager, QuestionMgmtSvc>();
-            //services.AddScoped<IAppUserManager, AppUserMgmtSvc>();
+            services.AddScoped<IAppUserManager, AppUserMgmtSvc>();
+            services.AddScoped<IBlogPostManager, BlogPostMgmtSvc>();
+            services.AddScoped<ICartManager, CartMgmtSvc>();
+            services.AddScoped<IPrintManager, PrintMgmtSvc>();
+            services.AddScoped<IProductManager, ProductMgmtSvc>();
+            services.AddScoped<IPurchaseManager, PurchaseMgmtSvc>();
+            services.AddScoped<IWeighInManager, WeighInMgmtSvc>();
 
         }
 
