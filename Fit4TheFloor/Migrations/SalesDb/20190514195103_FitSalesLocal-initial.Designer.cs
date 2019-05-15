@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fit4TheFloor.Migrations.SalesDb
 {
     [DbContext(typeof(SalesDbContext))]
-    [Migration("20190513200141_FitSalesLocal-initial")]
+    [Migration("20190514195103_FitSalesLocal-initial")]
     partial class FitSalesLocalinitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Active");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageURL");
@@ -64,6 +66,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Active");
 
                     b.Property<string>("Colors");
 
@@ -88,6 +92,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
 
                     b.Property<int>("CartID");
 
+                    b.Property<DateTime?>("Closed");
+
                     b.Property<int>("Color");
 
                     b.Property<decimal>("ExtPrice");
@@ -97,6 +103,8 @@ namespace Fit4TheFloor.Migrations.SalesDb
                     b.Property<int>("PrintID");
 
                     b.Property<int>("ProductID");
+
+                    b.Property<int>("Qty");
 
                     b.Property<int>("Size");
 

@@ -14,7 +14,7 @@ namespace Fit4TheFloor.Models
         public string ConfigSet { get; set; }
         public string Subject { get; set; }
         public string BodyHtml { get; set; }
-        public string BodyText { get; set; } = "Sent on behalf of The Silton Foundation using Amazon Simple Email Service";
+        public string BodyText { get; set; } = "Sent on behalf of Fit4theFloor using Amazon Simple Email Service";
 
 
         /// <summary>
