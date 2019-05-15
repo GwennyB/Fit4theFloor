@@ -44,11 +44,19 @@ namespace Fit4TheFloor.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Contact(ContactViewModel bag /*Email bag*/)
+        public async Task<IActionResult> Contact(Email bag)
         {
-            // build Email object from ContactViewModel
-            // alternative: Ditch the 'ContactViewModel' and just build 'Email' object in Contact form
-            return View();
+            if (ModelState.IsValid)
+            {
+                bag.BodyText = "Received from online contact form: \n" + bag.BodyText;
+                bool success = await bag.Send();
+                if (success)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+            ModelState.AddModelError(string.Empty, "Message failed. Please try again.");
+            return View(bag);
         }
 
     }
